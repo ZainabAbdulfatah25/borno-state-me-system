@@ -119,7 +119,8 @@ body {
   transform: translate(-50%, -50%);
   width: 45vw;
   max-width: 550px;
-  opacity: 0.12;
+  opacity: 0.04;
+  filter: grayscale(100%);
   pointer-events: none;
   z-index: 0;
 }
