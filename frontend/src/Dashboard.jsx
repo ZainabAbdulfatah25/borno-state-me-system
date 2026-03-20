@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
     Users, Map, Settings, Play, Database, Box, BarChart2, Shield, Activity, Share2,
-    Home, Star, LayoutGrid, Bell, HelpCircle, TrendingUp, BarChart3, LayoutDashboard, FileText, Moon, Sun, LogOut
+    Home, Star, LayoutGrid, Bell, HelpCircle, TrendingUp, BarChart3, LayoutDashboard, FileText, Moon, Sun, LogOut, Download
 } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import bornoLogo from './assets/borno-logo.png';
@@ -9,6 +9,7 @@ import { getOrganizations, getProjects, getReports } from './api';
 
 const Dashboard = () => {
     const [theme, setTheme] = useState('dark');
+    const [showExportMenu, setShowExportMenu] = useState(false);
     const [stats, setStats] = useState({
         orgs: 0,
         projects: 0,
@@ -92,7 +93,7 @@ const Dashboard = () => {
 
                 <header className="grafana-header">
                     <div className="breadcrumbs">
-                        Home &gt; Dashboard &gt; Borno State M/E &gt; <span>Executive Overview</span>
+                        <a href="#">Home</a> / <a href="#">Dashboard</a> / <a href="#">Borno State M/E</a> / <span>Executive Overview</span>
                     </div>
                     <div className="header-actions">
                         <div className="search-bar">
@@ -102,7 +103,18 @@ const Dashboard = () => {
                         <button className="btn-icon" onClick={toggleTheme} title="Toggle Theme" style={{ marginLeft: '8px' }}>
                             {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
                         </button>
-                        <button className="btn-icon" style={{ marginLeft: '8px' }}><Share2 size={16} /></button>
+                        <div style={{ position: 'relative', marginLeft: '8px' }}>
+                            <button className="btn-icon" onClick={() => setShowExportMenu(!showExportMenu)} title="Export">
+                                <Download size={18}/>
+                            </button>
+                            {showExportMenu && (
+                                <div style={{ position: 'absolute', right: 0, top: '100%', marginTop: '8px', backgroundColor: 'var(--panel-bg)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid var(--panel-border)', borderRadius: '6px', padding: '4px 0', zIndex: 50, minWidth: '140px', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}>
+                                    <div className="export-item" onClick={() => { alert('Exporting as CSV...'); setShowExportMenu(false); }}>Export as CSV</div>
+                                    <div className="export-item" onClick={() => { alert('Exporting as PDF...'); setShowExportMenu(false); }}>Export as PDF</div>
+                                    <div className="export-item" onClick={() => { alert('Exporting to Excel...'); setShowExportMenu(false); }}>Export as Excel</div>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </header>
 
