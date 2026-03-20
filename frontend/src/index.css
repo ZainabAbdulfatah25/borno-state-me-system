@@ -142,8 +142,28 @@ body {
 .breadcrumbs {
   color: var(--text-muted);
 }
+.breadcrumbs a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.breadcrumbs a:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
 .breadcrumbs span {
   color: var(--text-primary);
+}
+
+.export-item {
+  padding: 10px 16px;
+  cursor: pointer;
+  color: var(--text-primary);
+  font-size: 13px;
+  transition: background-color 0.2s;
+}
+.export-item:hover {
+  background: var(--highlight);
 }
 
 .header-actions {

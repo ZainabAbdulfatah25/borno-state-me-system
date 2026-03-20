@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Users, Map, Settings, Play, Database, Box, BarChart2, Shield, Activity, Share2, 
-  Home, Star, LayoutGrid, Bell, HelpCircle, TrendingUp, BarChart3, LayoutDashboard, FileText, Moon, Sun, LogOut
+import {
+    Users, Map, Settings, Play, Database, Box, BarChart2, Shield, Activity, Share2,
+    Home, Star, LayoutGrid, Bell, HelpCircle, TrendingUp, BarChart3, LayoutDashboard, FileText, Moon, Sun, LogOut
 } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import bornoLogo from './assets/borno-logo.png';
@@ -69,30 +69,30 @@ const Dashboard = () => {
                         <img src={bornoLogo} alt="Borno State Logo" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
                         <span style={{ marginLeft: '12px', fontSize: '18px', fontWeight: 'bold' }}>Borno M&E</span>
                     </div>
-                    
+
                     <div className="sidebar-section">
                         <div className="sidebar-item active">
-                            <LayoutDashboard size={20}/> <span>Dashboard</span>
+                            <LayoutDashboard size={20} /> <span>Dashboard</span>
                         </div>
-                        <div className="sidebar-item"><Users size={20}/> <span>Organizations</span></div>
-                        <div className="sidebar-item"><FileText size={20}/> <span>Projects</span></div>
-                        <div className="sidebar-item"><BarChart3 size={20}/> <span>Indicators</span></div>
-                        <div className="sidebar-item"><Map size={20}/> <span>Locations</span></div>
+                        <div className="sidebar-item"><Users size={20} /> <span>Organizations</span></div>
+                        <div className="sidebar-item"><FileText size={20} /> <span>Projects</span></div>
+                        <div className="sidebar-item"><BarChart3 size={20} /> <span>Indicators</span></div>
+                        <div className="sidebar-item"><Map size={20} /> <span>Locations</span></div>
                     </div>
                 </div>
-                
+
                 <div className="sidebar-bottom">
-                    <div className="sidebar-item"><Settings size={20}/> <span>Settings</span></div>
+                    <div className="sidebar-item"><Settings size={20} /> <span>Settings</span></div>
                 </div>
             </aside>
 
             <main className="grafana-main">
                 {/* Fixed faded watermark in the background */}
                 <img src={bornoLogo} alt="" className="watermark" />
-                
+
                 <header className="grafana-header">
                     <div className="breadcrumbs">
-                        Home &gt; Dashboards &gt; Borno State M/E &gt; <span>Executive Overview</span>
+                        Home &gt; Dashboard &gt; Borno State M/E &gt; <span>Executive Overview</span>
                     </div>
                     <div className="header-actions">
                         <div className="search-bar">
@@ -102,7 +102,7 @@ const Dashboard = () => {
                         <button className="btn-icon" onClick={toggleTheme} title="Toggle Theme" style={{ marginLeft: '8px' }}>
                             {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
                         </button>
-                        <button className="btn-icon" style={{ marginLeft: '8px' }}><Share2 size={16}/></button>
+                        <button className="btn-icon" style={{ marginLeft: '8px' }}><Share2 size={16} /></button>
                     </div>
                 </header>
 
@@ -111,7 +111,7 @@ const Dashboard = () => {
                         <label>Filter</label>
                         <select className="filter-select"><option>All Partners</option></select>
                     </div>
-                    
+
                     <div className="time-controls">
                         <button className="time-btn">&lt; Last 3 months &gt;</button>
                         <button className="refresh-btn">🔄 Refresh ˅</button>
@@ -128,7 +128,7 @@ const Dashboard = () => {
                                 <button className="panel-menu">⋮</button>
                             </div>
                             <div className="big-number green-ish" style={{ fontSize: '48px', padding: '16px 0 32px' }}>{stats.orgs}</div>
-                            <div style={{ textAlign: 'center', paddingBottom: '16px', color: 'var(--text-muted)' }}>+2 this month</div>
+                            <div style={{ textAlign: 'center', paddingBottom: '16px', color: 'var(--text-muted)' }}></div>
                         </div>
                         <div className="panel">
                             <div className="panel-header">
