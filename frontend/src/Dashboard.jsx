@@ -8,7 +8,12 @@ import bornoLogo from './assets/borno-logo.png';
 import { getOrganizations, getProjects, getReports } from './api';
 
 const Dashboard = () => {
-    const [theme, setTheme] = useState('dark');
+    const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
+
+    useEffect(() => {
+        localStorage.setItem('theme', theme);
+    }, [theme]);
+
     const [showExportMenu, setShowExportMenu] = useState(false);
     const [stats, setStats] = useState({
         orgs: 0,
@@ -93,7 +98,7 @@ const Dashboard = () => {
 
                 <header className="header">
                     <div className="breadcrumbs">
-                        <a href="/">Home</a> / <a href="/dashboard">Dashboard</a> / <span>Executive Overview</span>
+                        <a href="/">Home</a> / <a href="/dashboard">Dashboard</a> / <a href="/executive-overview">Executive Overview</a>
                     </div>
                     <div className="header-actions">
                         <div className="search-bar">
