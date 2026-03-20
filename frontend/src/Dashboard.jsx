@@ -87,13 +87,13 @@ const Dashboard = () => {
                 </div>
             </aside>
 
-            <main className="grafana-main">
+            <main className="main">
                 {/* Fixed faded watermark in the background */}
                 <img src={bornoLogo} alt="" className="watermark" />
 
-                <header className="grafana-header">
+                <header className="header">
                     <div className="breadcrumbs">
-                        <a href="#">Home</a> / <a href="#">Dashboard</a> / <a href="#">Borno State M/E</a> / <span>Executive Overview</span>
+                        <a href="/">Home</a> / <a href="/dashboard">Dashboard</a> / <span>Executive Overview</span>
                     </div>
                     <div className="header-actions">
                         <div className="search-bar">
@@ -105,7 +105,7 @@ const Dashboard = () => {
                         </button>
                         <div style={{ position: 'relative', marginLeft: '8px' }}>
                             <button className="btn-icon" onClick={() => setShowExportMenu(!showExportMenu)} title="Export">
-                                <Download size={18}/>
+                                <Download size={18} />
                             </button>
                             {showExportMenu && (
                                 <div style={{ position: 'absolute', right: 0, top: '100%', marginTop: '8px', backgroundColor: 'var(--panel-bg)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid var(--panel-border)', borderRadius: '6px', padding: '4px 0', zIndex: 50, minWidth: '140px', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}>
