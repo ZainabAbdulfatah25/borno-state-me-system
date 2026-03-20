@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Users, Map, Settings, Play, Database, Box, BarChart2, Shield, Activity, Share2, 
-  Home, Star, LayoutGrid, Bell, HelpCircle, TrendingUp, BarChart3, LayoutDashboard, FileText, Moon, Sun
+  Home, Star, LayoutGrid, Bell, HelpCircle, TrendingUp, BarChart3, LayoutDashboard, FileText, Moon, Sun, LogOut
 } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import bornoLogo from './assets/borno-logo.png';
@@ -65,12 +65,16 @@ const Dashboard = () => {
         <div className="grafana-layout" data-theme={theme}>
             <aside className="grafana-sidebar">
                 <div className="sidebar-top">
-                    <div className="sidebar-icon-brand">
-                        <img src={bornoLogo} alt="Borno State Logo" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
-                        <span style={{ marginLeft: '12px', fontSize: '18px', fontWeight: 'bold' }}>Borno M&E</span>
+                    {/* Logo Area mimicking Restore360 */}
+                    <div style={{ padding: '24px 24px', backgroundColor: '#008751', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <img src={bornoLogo} alt="Borno State Logo" style={{ width: '44px', height: '44px', objectFit: 'contain', zIndex: 10, position: 'relative' }} />
+                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                            <span style={{ fontSize: '15px', fontWeight: 'bold', color: 'white', lineHeight: '1.25' }}>Borno M&E</span>
+                            <span style={{ fontSize: '12px', color: '#d1fae5', lineHeight: '1.25' }}>Data Dashboard<br/>System</span>
+                        </div>
                     </div>
                     
-                    <div className="sidebar-section">
+                    <div className="sidebar-section" style={{ marginTop: '16px' }}>
                         <div className="sidebar-item active">
                             <LayoutDashboard size={20}/> <span>Dashboard</span>
                         </div>
@@ -81,8 +85,18 @@ const Dashboard = () => {
                     </div>
                 </div>
                 
-                <div className="sidebar-bottom">
-                    <div className="sidebar-item"><Settings size={20}/> <span>Settings</span></div>
+                <div className="sidebar-bottom" style={{ padding: '16px', borderTop: '1px solid var(--panel-border)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', marginBottom: '8px', backgroundColor: 'var(--highlight)', borderRadius: '12px', border: '1px solid var(--panel-border)' }}>
+                        <div style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#008751', borderRadius: '50%', color: 'white', fontWeight: 'bold', fontSize: '18px', overflow: 'hidden' }}>
+                            <img src={bornoLogo} alt="Borno" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', flex: 1, overflow: 'hidden' }}>
+                            <span style={{ fontSize: '14px', fontWeight: '500', color: 'var(--text-primary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>System Admin</span>
+                            <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Borno State Govt</span>
+                        </div>
+                    </div>
+                    <div className="sidebar-item" style={{ padding: '8px 12px' }}><Settings size={18}/> <span>Settings</span></div>
+                    <div className="sidebar-item" style={{ padding: '8px 12px', color: 'var(--red)' }}><LogOut size={18}/> <span>Logout</span></div>
                 </div>
             </aside>
 
