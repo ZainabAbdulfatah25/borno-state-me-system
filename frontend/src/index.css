@@ -1,5 +1,5 @@
 :root {
-  color-scheme: dark;
+  /* Default to dark theme if no data-theme is set, to match previous look */
   --bg-color: #111217;
   --panel-bg: #181b1f;
   --panel-border: #22252b;
@@ -12,12 +12,39 @@
   --sidebar-w: 240px;
 }
 
+[data-theme="dark"] {
+  --bg-color: #111217;
+  --panel-bg: #181b1f;
+  --panel-border: #22252b;
+  --text-primary: #ccccdc;
+  --text-muted: #8e95a1;
+  --header-bg: #181b1f;
+  --green: #73bf69;
+  --red: #f2495c;
+  --highlight: #202226;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg-color: #f8fafc;
+  --panel-bg: #ffffff;
+  --panel-border: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-muted: #64748b;
+  --header-bg: #ffffff;
+  --green: #10b981;
+  --red: #ef4444;
+  --highlight: #f1f5f9;
+  color-scheme: light;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', Roboto, 'Helvetica Neue', Arial, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-primary);
   font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 #root {
@@ -38,6 +65,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
 .sidebar-top, .sidebar-bottom {
@@ -58,16 +86,17 @@ body {
   padding: 10px 16px;
   color: var(--text-muted);
   cursor: pointer;
+  transition: all 0.2s;
 }
 
 .sidebar-item:hover {
-  background: rgba(255,255,255,0.05);
-  color: #fff;
+  background: var(--highlight);
+  color: var(--text-primary);
 }
 
 .sidebar-item.active {
-  background: rgba(255,255,255,0.05);
-  color: #fff;
+  background: var(--highlight);
+  color: var(--text-primary);
   border-left: 2px solid orange;
 }
 
@@ -78,6 +107,20 @@ body {
   flex-direction: column;
   height: 100vh;
   overflow-y: auto;
+  position: relative; /* important for watermark absolute positioning */
+}
+
+/* Faded Watermark */
+.watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40vw;
+  max-width: 500px;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .grafana-header {
@@ -87,6 +130,9 @@ body {
   padding: 12px 24px;
   background: var(--header-bg);
   border-bottom: 1px solid var(--panel-border);
+  position: relative;
+  z-index: 10;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
 .breadcrumbs {
@@ -99,10 +145,11 @@ body {
 .header-actions {
   display: flex;
   gap: 12px;
+  align-items: center;
 }
 .search-bar {
-  background: #0b0c0e;
-  border: 1px solid #22252b;
+  background: var(--highlight);
+  border: 1px solid var(--panel-border);
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -111,7 +158,7 @@ body {
 .search-bar input {
   background: transparent;
   border: none;
-  color: #fff;
+  color: var(--text-primary);
   outline: none;
 }
 .btn-icon {
@@ -119,6 +166,11 @@ body {
   border: none;
   color: var(--text-muted);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.btn-icon:hover {
+  color: var(--text-primary);
 }
 
 /* Filters */
@@ -127,12 +179,14 @@ body {
   padding: 12px 24px;
   gap: 16px;
   align-items: center;
+  position: relative;
+  z-index: 10;
 }
 
 .filter-group {
   display: flex;
   align-items: stretch;
-  background: #0b0c0e;
+  background: var(--bg-color);
   border: 1px solid var(--panel-border);
   border-radius: 4px;
   overflow: hidden;
@@ -140,7 +194,7 @@ body {
 
 .filter-group label {
   padding: 6px 10px;
-  background: #202226;
+  background: var(--highlight);
   border-right: 1px solid var(--panel-border);
   font-size: 13px;
   color: var(--text-muted);
@@ -160,7 +214,7 @@ body {
   gap: 8px;
 }
 .time-btn, .refresh-btn {
-  background: #202226;
+  background: var(--highlight);
   color: var(--text-primary);
   border: 1px solid var(--panel-border);
   padding: 6px 12px;
@@ -174,12 +228,15 @@ body {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  position: relative;
+  z-index: 10;
 }
 
 .panel {
   background: var(--panel-bg);
   border: 1px solid var(--panel-border);
-  border-radius: 2px;
+  border-radius: 4px;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
 .panel-header {
@@ -216,57 +273,15 @@ body {
 }
 
 .green-ish { color: var(--green); }
-.red-ish { color: var(--green); } 
+.red-ish { color: var(--red); } 
 
-.grafana-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
-  table-layout: fixed;
+.chart-card {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
 }
 
-.grafana-table th, .grafana-table td {
-  padding: 8px 16px;
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
-
-.grafana-table th {
-  color: var(--text-muted);
-  font-weight: 500;
-  text-align: left;
-  border-top: none;
-  border-bottom: 2px solid rgba(255,255,255,0.05);
-}
-
-.right-align {
-  text-align: right !important;
-}
-
-.center-align {
-  text-align: center !important;
-}
-
-.bg-red {
-  background: var(--red) !important;
-  color: #fff;
-}
-
-/* Specific styling for progress cell */
-.progress-cell {
-  background: var(--red);
-  color: #fff;
-  text-align: center;
-  border-right: 1px solid var(--panel-border);
-}
-
-.table-container {
-  overflow-x: auto;
-}
-
-.pagination {
-  text-align: left;
-  padding: 12px 16px;
-  color: var(--text-muted);
-  font-size: 12px;
-  border-top: 1px solid rgba(255,255,255,0.05);
+.chart-container {
+  flex: 1;
+  padding: 16px;
 }
