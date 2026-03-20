@@ -4,6 +4,7 @@ import {
   Home, Star, LayoutGrid, Bell, HelpCircle, TrendingUp, BarChart3, LayoutDashboard, FileText
 } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
+import bornoLogo from './assets/borno-logo.png';
 import { getOrganizations, getProjects, getReports } from './api';
 
 const Dashboard = () => {
@@ -56,7 +57,8 @@ const Dashboard = () => {
             <aside className="grafana-sidebar">
                 <div className="sidebar-top">
                     <div className="sidebar-icon-brand">
-                        <Activity color="#ffb347"/>
+                        <img src={bornoLogo} alt="Borno State Logo" style={{ width: '48px', height: '48px', objectFit: 'contain' }} />
+                        <span style={{ marginLeft: '12px', fontSize: '18px', fontWeight: 'bold' }}>Borno M&E</span>
                     </div>
                     
                     <div className="sidebar-section">
