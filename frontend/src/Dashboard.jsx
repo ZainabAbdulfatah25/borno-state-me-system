@@ -63,8 +63,8 @@ const Dashboard = () => {
     const chartTooltipBg = theme === 'dark' ? '#181b1f' : '#ffffff';
 
     return (
-        <div className="grafana-layout" data-theme={theme}>
-            <aside className="grafana-sidebar">
+        <div className="layout" data-theme={theme}>
+            <aside className="sidebar">
                 <div className="sidebar-top">
                     <div className="sidebar-icon-brand">
                         <img src={bornoLogo} alt="Borno State Logo" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
