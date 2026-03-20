@@ -1,0 +1,272 @@
+:root {
+  color-scheme: dark;
+  --bg-color: #111217;
+  --panel-bg: #181b1f;
+  --panel-border: #22252b;
+  --text-primary: #ccccdc;
+  --text-muted: #8e95a1;
+  --header-bg: #181b1f;
+  --green: #73bf69;
+  --red: #f2495c;
+  --highlight: #202226;
+  --sidebar-w: 240px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+#root {
+  width: 100%;
+}
+
+.grafana-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Sidebar */
+.grafana-sidebar {
+  width: var(--sidebar-w);
+  background: var(--panel-bg);
+  border-right: 1px solid var(--panel-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar-top, .sidebar-bottom {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-icon-brand {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.sidebar-item:hover {
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+}
+
+.sidebar-item.active {
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  border-left: 2px solid orange;
+}
+
+/* Main Content */
+.grafana-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.grafana-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--panel-border);
+}
+
+.breadcrumbs {
+  color: var(--text-muted);
+}
+.breadcrumbs span {
+  color: var(--text-primary);
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+.search-bar {
+  background: #0b0c0e;
+  border: 1px solid #22252b;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+}
+.search-bar input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  outline: none;
+}
+.btn-icon {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+/* Filters */
+.filters-bar {
+  display: flex;
+  padding: 12px 24px;
+  gap: 16px;
+  align-items: center;
+}
+
+.filter-group {
+  display: flex;
+  align-items: stretch;
+  background: #0b0c0e;
+  border: 1px solid var(--panel-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.filter-group label {
+  padding: 6px 10px;
+  background: #202226;
+  border-right: 1px solid var(--panel-border);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.filter-select {
+  background: transparent;
+  color: var(--text-primary);
+  border: none;
+  padding: 6px 24px 6px 10px;
+  outline: none;
+}
+
+.time-controls {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+.time-btn, .refresh-btn {
+  background: #202226;
+  color: var(--text-primary);
+  border: 1px solid var(--panel-border);
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Dashboard Content grids */
+.dashboard-content {
+  padding: 0 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 2px;
+}
+
+.panel-header {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.panel-header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.panel-menu {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.metrics-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.big-number {
+  font-size: 64px;
+  font-weight: 600;
+  text-align: center;
+  padding: 24px 0 48px;
+}
+
+.green-ish { color: var(--green); }
+.red-ish { color: var(--green); } 
+
+.grafana-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  table-layout: fixed;
+}
+
+.grafana-table th, .grafana-table td {
+  padding: 8px 16px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.grafana-table th {
+  color: var(--text-muted);
+  font-weight: 500;
+  text-align: left;
+  border-top: none;
+  border-bottom: 2px solid rgba(255,255,255,0.05);
+}
+
+.right-align {
+  text-align: right !important;
+}
+
+.center-align {
+  text-align: center !important;
+}
+
+.bg-red {
+  background: var(--red) !important;
+  color: #fff;
+}
+
+/* Specific styling for progress cell */
+.progress-cell {
+  background: var(--red);
+  color: #fff;
+  text-align: center;
+  border-right: 1px solid var(--panel-border);
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.pagination {
+  text-align: left;
+  padding: 12px 16px;
+  color: var(--text-muted);
+  font-size: 12px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
